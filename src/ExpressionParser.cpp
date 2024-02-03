@@ -126,9 +126,13 @@ std::any ExpressionParser::visitCellIdAtomExpr(DiamondSheetsParser::CellIdAtomEx
         return ParserResult(0, ParserResult::BOOL);
 
     // Checking if value is number
-    for (auto &c : value)
+    for (int i=0; i<value.size(); i++)
     {
-        if (!c.isDigit()) return ParserResult(Cell::errorText); // TODO minus char
+        // If a number is preceded by a minus sign
+        if (i == 0 && value[i] == '-')
+            continue;
+
+        if (!value[i].isDigit()) return ParserResult(Cell::errorText);
     }
 
     return ParserResult(value.toInt());
