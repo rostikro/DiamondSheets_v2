@@ -4,7 +4,7 @@ antlr_target(DiamondSheetsGrammar ../grammar/DiamondSheets.g4 VISITOR OUTPUT_DIR
 # Added this definition because of conflict between qt keywords and antlr lib
 ADD_DEFINITIONS(-DQT_NO_KEYWORDS)
 
-add_executable(DiamondSheets main.cpp
+add_executable(DiamondSheets WIN32 main.cpp
         DiamondSheets.cpp
         DiamondSheets.h
         TableModel.cpp
